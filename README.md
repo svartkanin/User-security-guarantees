@@ -38,8 +38,8 @@ To be able to run all 3 programs, external libraries have to be installed, if th
 In addition the mbedtls library with SGX support has to be downloaded from [mbedtls-sgx](https://github.com/bl4ck5un/mbedtls-SGX) and copied into the directory _Application/_.
 Then execute:
 
-	```cd Application/mbedtls-SGX```
-	```make```
+ ```cd Application/mbedtls-SGX```<br/>
+ ```make```
 
 To be able to create SGX enclaves inside a Docker container, patched containers have to be used for now. Such containers can be found here [tozd/docker-sgx](https://github.com/tozd/docker-sgx) or here [aminueza/docker-sgx](https://github.com/aminueza/docker-sgx).
 
