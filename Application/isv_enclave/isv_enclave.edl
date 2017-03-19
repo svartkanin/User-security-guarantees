@@ -1,0 +1,70 @@
+enclave {
+    from "sgx_tkey_exchange.edl" import *;
+ 	from "mbedtls_sgx.edl" import *; 
+
+    include "sgx_key_exchange.h"
+    include "sgx_trts.h"
+
+    trusted {
+        public sgx_status_t enclave_init_ra(int b_pse, [out] sgx_ra_context_t *p_context);
+        public sgx_status_t enclave_ra_close(sgx_ra_context_t context);
+
+        public sgx_status_t verify_att_result_mac(sgx_ra_context_t context,
+                                                  [in,size=message_size] uint8_t* message, 
+                                                  size_t message_size, 
+                                                  [in,size=mac_size] uint8_t* mac, 
+                                                  size_t mac_size);
+
+        public sgx_status_t verify_secret_data(sgx_ra_context_t context,  
+		                                        [in,size=secret_size] uint8_t* p_secret,
+		                                        uint32_t secret_size,
+		                                        [in,count=16] uint8_t* gcm_mac,
+												uint32_t max_verification_length,
+												[out, count=32] uint8_t *p_ret);
+
+
+		public sgx_status_t encrypt_secret(sgx_ra_context_t context,
+											 [in, count=secret_size] uint8_t *g_secret,
+											 uint32_t secret_size,
+											 [user_check, isary] uint8_t *p_dst,
+											 [out, count=16] uint8_t *p_gcm_mac);
+
+		public sgx_status_t extract_hmac(sgx_ra_context_t context,
+											 [in,size=secret_size] uint8_t* p_secret,
+											 uint32_t secret_size,
+   	                                         [in,count=16] uint8_t* gcm_mac,
+											 [out, count=32] uint8_t *p_ret);
+
+		public sgx_status_t calc_hmac(sgx_ra_context_t context,
+											[in,size=16] uint8_t* hmac_key,
+											[user_check, isary] uint8_t *p_dst,
+											[out, count=16] uint8_t *p_gcm_mac);
+
+
+		public sgx_status_t process_x509_pkey(sgx_ra_context_t context,
+												[in, size=pkey_size] uint8_t *pkey,
+												uint32_t pkey_size,
+												[in, count=16] uint8_t *pkey_gcm_mac,
+												[in, size=x509_size] uint8_t *x509,
+												uint32_t x509_size,
+												[in, count=16] uint8_t *x509_gcm_mac);
+
+
+		public sgx_status_t mbedtls_connection([in, count=mbedtls_crt_len] const char *mbedtls_crt,  
+											   int mbedtls_crt_len);
+
+    };
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
