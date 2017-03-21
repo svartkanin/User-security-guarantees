@@ -2,7 +2,7 @@
 
 ## What's this
 
-This system was developed during a research project, it is a protype of its kind and for sure can be extended in many ways. The purpose of such system is to provide a user, in charge of an SDN controller, with certain security guarantees towards the application layer, so that the applications accessing the controller can be considered trustworthy. 
+This system was developed during a research project conducted with RISE SICS (https://www.sics.se/projects/5g-ensure). It is a protype of its kind and for sure can be extended in many ways. The purpose of such system is to provide a user, in charge of an SDN controller, with certain security guarantees towards the application layer, so that the applications accessing the controller can be considered trustworthy. 
 The applications are being considered to run inside a Docker container on a remote host. To be able to guarantee the integrity of the remote host, Linux IMA is used to check the integrity of the remote system. The measurement results of IMA are sent to the controller, where they are validated. In addition to IMA, Intel's SGX (Software Guard Extension) is used to encrypt and store sensitive data. After the IMA meassurement list has been validated successfully, the application running inside a container will be validated as well. If this validation has been completed successfully, the application will receive a client certificate, which can be used for a communication channel with the SDN controller.
 
 
