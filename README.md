@@ -72,13 +72,16 @@ Before running the programs, the ```GeneralSettings.h``` must be modified:
 
 ## Compiling and running
 To compile all 3 programs execute:
-```cd VerificationManager```
-```make```
-```cd ../RemoteHost```
-```make SGX_MODE=HW SGX_PRERELEASE=1```
-```cd ../Application```
+
+```cd VerificationManager```<br/>
+```make```<br/>
+```cd ../RemoteHost```<br/>
+```make SGX_MODE=HW SGX_PRERELEASE=1```<br/>
+```cd ../Application```<br/>
 ```make SGX_MODE=HW SGX_PRERELEASE=1```
 
-The created programs ```app``` are then located in the folders _VerificationManager_, _RemoteHost_ and _Application_, and can simply be run with ```./app```
+The created programs ```app``` are then located in the folders _VerificationManager_, _RemoteHost_ and _Application_, and can simply be run with
+
+```./app```
 
 
